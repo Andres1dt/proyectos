@@ -1,0 +1,36 @@
+<head>
+    <meta charset="utf-8">
+    <title> Preguntas </title>
+    <link rel='stylesheet' href='../../stylesheets/style.css' />
+    <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel='stylesheet' type='text/css' media='only screen and (min-width: 530px) and (min-device-width: 481px)' href='/stylesheets/wide.css' />
+    <link rel='stylesheet' type='text/css' media='only screen and (max-width: 480px)' href='/stylesheets/smartphone.css' /> 
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" /> 
+</head> 
+
+<div class="panel panel-success" style="margin: 0 auto; ">
+	<div class="panel-heading">
+		<h3 class="panel-title">Pregunta: <%= quiz.pregunta %></h3><p>
+	</div>
+	<div class="panel-body">
+	  <form method="get" action="/quizes/<%= quiz.id %>/answer">        
+	 
+	   <input class="form-control" type="text" name="respuesta" placeholder="Respuesta"/><p>
+	
+	   <a href="/quizes"><button class="btn btn-warning" type="button">Volver</button></a>
+	      <input class="btn btn-success" type="submit" value="Enviar">
+	  </form>
+	  <p><a href="/quizes/<%= quiz.id %>/comments/new"><button class="btn btn-primary">Nuevo comentario</button></a></p>
+	  <p><strong>Comentarios:</strong></p>
+
+<%for(index in quiz.Comments){%>
+	<%if(quiz.Comments[index].publicado || session.user){%>
+		<p>- <%=quiz.Comments[index].texto%>
+			<%if(session.user && !quiz.Comments[index].publicado){%>
+				<a href="/quizes/<%= quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish"><button>Publicar</button></a>
+			<%}%>
+		</p>
+	<%}%>	
+<%}%>
+	</div>
+</div>

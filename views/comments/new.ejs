@@ -1,0 +1,20 @@
+  <link rel="stylesheet" type="text/css" href="../../../bootstrap/css/bootstrap.min.css">
+  <link rel='stylesheet' type='text/css' media='only screen and (min-width: 530px) and (min-device-width: 481px)' href='../../../stylesheets/wide.css' />
+    <link rel='stylesheet' type='text/css' media='only screen and (max-width: 480px)' href='../../../stylesheets/smartphone.css' /> 
+  
+<body>
+
+	<div class="panel panel-success" style="margin: 0 auto;">
+	<div class="panel-heading">
+		<h3 class="panel-title">Añadir comentario: </h3><p>
+	</div>
+	
+
+		<form method="post" action="/quizes/<%=quizid%>/comments/" >      
+		  <input required class="form-control" type="text" id="comment" name="comment[texto]" value=""/> <p>
+		  <button class="btn btn-success"  type="submit">Enviar</button>
+		</form>
+
+	</div>
+</body>
+
